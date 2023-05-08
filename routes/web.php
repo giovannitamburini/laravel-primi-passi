@@ -16,11 +16,15 @@ use Illuminate\Support\Facades\Route;
 // rotta per la homepage
 Route::get('/', function () {
 
-    $data = [
-        "nickname" => "tambu05"
+    $nickname = "tambu05";
+
+    $linkpages = [
+        'user_profile',
+        'user_friends',
+        'first_person_game'
     ];
 
-    return view('home', $data);
+    return view('home', compact('nickname', 'linkpages'));
 });
 
 // rotta per la pagina 1
@@ -36,7 +40,7 @@ Route::get('/user_profile', function () {
     ];
 
     return view('user_profile', $user);
-});
+})->name('user_profile');
 
 // rotta per la pagina 2
 Route::get('/user_friends', function () {
@@ -50,7 +54,7 @@ Route::get('/user_friends', function () {
     ];
 
     return view('user_friends', compact('friends'));
-});
+})->name('user_friends');
 
 // rotta per la pagina 3
 Route::get('/first_person_game', function () {
@@ -59,4 +63,4 @@ Route::get('/first_person_game', function () {
     $firstPerson = true;
 
     return view('first_person_game', compact('name', 'firstPerson'));
-});
+})->name('first_person_game');
