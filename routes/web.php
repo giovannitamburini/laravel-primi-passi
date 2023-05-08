@@ -16,35 +16,47 @@ use Illuminate\Support\Facades\Route;
 // rotta per la homepage
 Route::get('/', function () {
 
-    return view('home');
+    $data = [
+        "nickname" => "tambu05"
+    ];
+
+    return view('home', $data);
 });
 
 // rotta per la pagina 1
-Route::get('/page_one', function () {
+Route::get('/user_profile', function () {
 
-    return view('page_one');
+    // creo un array
+    $user = [
+        "nickname" => "tambu05",
+        "name" => "Giovanni",
+        "surname" => "Tamburini",
+        "age" => 31,
+        "email" => "gio@email.com"
+    ];
+
+    return view('user_profile', $user);
 });
 
 // rotta per la pagina 2
-Route::get('/page_two', function () {
+Route::get('/user_friends', function () {
 
-    return view('page_two');
+    $friends = [
+        'friend01',
+        'friend02',
+        'friend03',
+        'friend04',
+        'friend05',
+    ];
+
+    return view('user_friends', compact('friends'));
 });
 
 // rotta per la pagina 3
-Route::get('/page_three', function () {
+Route::get('/first_person_game', function () {
 
-    return view('page_three');
-});
+    $name = "Call of duty";
+    $firstPerson = true;
 
-// rotta per la pagina 4
-Route::get('/page_four', function () {
-
-    return view('page_four');
-});
-
-// rotta per la pagina 5
-Route::get('/page_five', function () {
-
-    return view('page_five');
+    return view('first_person_game', compact('name', 'firstPerson'));
 });
